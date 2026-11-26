@@ -1,10 +1,6 @@
 import { useEffect } from 'react'
 import { Link, Outlet, useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import {
-  BookOpen, BookOpenCheck, ClipboardCheck, Info, MessageSquarePlus,
-  ScanLine,
-} from 'lucide-react'
 
 export function Layout() {
   const { t, i18n } = useTranslation()
@@ -34,7 +30,6 @@ export function Layout() {
           <span className="rail-brand-mark" aria-hidden="true">س</span>
           <span className="rail-brand-copy">
             <strong>{isArabic ? 'سَنا' : 'Sana'}</strong>
-            <small>{t('homePill')}</small>
           </span>
         </Link>
         <nav className="rail-nav" aria-label={isArabic ? 'التنقل الرئيسي' : 'Primary navigation'}>
@@ -42,35 +37,30 @@ export function Layout() {
             className={`rail-link ${isChatRoute && !imageAnalysisActive ? 'active' : ''}`}
             to="/chat"
           >
-            <span className="rail-link-icon"><MessageSquarePlus size={18} /></span>
             <span className="rail-link-label">{t('newChat')}</span>
           </Link>
           <Link
             className={`rail-link ${isActive('/encyclopedia') ? 'active' : ''}`}
             to="/encyclopedia"
           >
-            <span className="rail-link-icon"><BookOpen size={18} /></span>
             <span className="rail-link-label">{t('navLibrary')}</span>
           </Link>
           <Link
             className={`rail-link ${imageAnalysisActive ? 'active' : ''}`}
             to="/chat?tool=covid-chest-xray"
           >
-            <span className="rail-link-icon"><ScanLine size={18} /></span>
             <span className="rail-link-label">{t('libraryCategoryImage')}</span>
           </Link>
           <Link
             className={`rail-link ${isActive('/guidelines') ? 'active' : ''}`}
             to="/guidelines"
           >
-            <span className="rail-link-icon"><BookOpenCheck size={18} /></span>
             <span className="rail-link-label">{t('navGuidelines')}</span>
           </Link>
           <Link
             className={`rail-link ${isActive('/clinical-review') ? 'active' : ''}`}
             to="/clinical-review"
           >
-            <span className="rail-link-icon"><ClipboardCheck size={18} /></span>
             <span className="rail-link-label">{t('navClinicalReview')}</span>
           </Link>
         </nav>
@@ -79,7 +69,6 @@ export function Layout() {
             className={`rail-link ${isActive('/about') ? 'active' : ''}`}
             to="/about"
           >
-            <span className="rail-link-icon"><Info size={18} /></span>
             <span className="rail-link-label">{t('navAbout')}</span>
           </Link>
         </div>
