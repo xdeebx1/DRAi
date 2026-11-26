@@ -580,8 +580,8 @@ html[dir="rtl"] .user-bubble { border-radius: 20px 20px 20px 4px; }
   width: 100%;
   min-width: 0;
   height: var(--rail-height);
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   align-items: center;
   border-block-end: 1px solid #E3E0D6;
   background: rgba(255, 255, 255, .96);
@@ -591,6 +591,7 @@ html[dir="rtl"] .user-bubble { border-radius: 20px 20px 20px 4px; }
 }
 
 .rail-brand {
+  justify-self: start;
   flex: 0 0 auto;
   min-height: 46px;
   display: flex;
@@ -625,13 +626,14 @@ html[dir="rtl"] .user-bubble { border-radius: 20px 20px 20px 4px; }
 .rail-brand-copy strong { font-size: 17px; font-weight: 700; }
 
 .rail-nav {
-  flex: 1;
   min-width: 0;
+  width: max-content;
+  max-width: 100%;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   gap: clamp(12px, 2vw, 24px);
-  margin-inline: clamp(18px, 4vw, 48px) auto;
+  margin: 0;
 }
 .rail-link {
   position: relative;
@@ -666,8 +668,7 @@ html[dir="rtl"] .user-bubble { border-radius: 20px 20px 20px 4px; }
 .rail-bottom {
   display: flex;
   align-items: center;
-  flex: 0 0 auto;
-  margin-inline-start: auto;
+  justify-self: end;
 }
 
 .premium-chat .chat-column {
@@ -869,9 +870,16 @@ html[dir="rtl"] .user-bubble { border-radius: 20px 20px 20px 4px; }
 
 @media (max-width: 700px) {
   .premium-app-shell { --rail-height: 66px; }
-  .premium-app-shell > .premium-rail { padding-inline: 12px; }
+  .premium-app-shell > .premium-rail {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    padding-inline: 12px;
+  }
   .rail-brand { gap: 5px; }
   .rail-nav {
+    width: auto;
+    max-width: none;
+    justify-self: stretch;
+    min-width: 0;
     justify-content: flex-start;
     gap: 16px;
     margin-inline: 12px;
@@ -879,7 +887,7 @@ html[dir="rtl"] .user-bubble { border-radius: 20px 20px 20px 4px; }
     scrollbar-width: none;
   }
   .rail-nav::-webkit-scrollbar { display: none; }
-  .rail-bottom { margin-inline-start: 0; }
+  .rail-bottom { justify-self: end; }
   .rail-link { min-height: 42px; font-size: 12px; }
 }
 

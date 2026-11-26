@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { Link, Outlet, useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import { Stethoscope } from 'lucide-react'
 
 export function Layout() {
   const { t, i18n } = useTranslation()
@@ -27,7 +28,9 @@ export function Layout() {
           aria-label={t('navHome')}
           title={t('navHome')}
         >
-          <span className="rail-brand-mark" aria-hidden="true">س</span>
+          <span className="rail-brand-mark" aria-hidden="true">
+            <Stethoscope size={22} strokeWidth={1.9} />
+          </span>
           <span className="rail-brand-copy">
             <strong>{isArabic ? 'سَنا' : 'Sana'}</strong>
           </span>
