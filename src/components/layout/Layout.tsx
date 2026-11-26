@@ -2,8 +2,8 @@ import { useEffect } from 'react'
 import { Link, Outlet, useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import {
-  Clock3, ClipboardCheck, FileImage, GraduationCap, LayoutGrid,
-  MessageSquarePlus, Search, Settings, Sparkles,
+  BookOpen, BookOpenCheck, ClipboardCheck, HeartPulse, Info,
+  MessageSquarePlus, ScanLine,
 } from 'lucide-react'
 
 export function Layout() {
@@ -11,7 +11,10 @@ export function Layout() {
   const isArabic = (i18n.resolvedLanguage ?? i18n.language).startsWith('ar')
   const location = useLocation()
   const isChatRoute = location.pathname === '/chat'
-  const isActive = (path: string) => location.pathname === path
+  const imageAnalysisActive =
+    isChatRoute && new URLSearchParams(location.search).get('tool') === 'covid-chest-xray'
+  const isActive = (path: string) =>
+    location.pathname === path || location.pathname.startsWith(`${path}/`)
 
   useEffect(() => {
     document.documentElement.lang = isArabic ? 'ar' : 'en'
@@ -21,89 +24,68 @@ export function Layout() {
 
   return (
     <div className={`app-shell premium-app-shell ${isChatRoute ? 'chat-mode' : ''}`}>
-      <aside className="premium-rail" aria-label={isArabic ? 'التنقل الرئيسي' : 'Primary navigation'}>
-        <Link className="rail-brand" to="/" aria-label="Sana">
-          <Sparkles size={21} />
+      <aside className="premium-rail">
+        <Link
+          className="rail-brand"
+          to="/"
+          aria-label={t('navHome')}
+          title={t('navHome')}
+        >
+          <span className="rail-brand-mark" aria-hidden="true">س</span>
+          <span className="rail-brand-copy">
+            <strong>{isArabic ? 'سَنا' : 'Sana'}</strong>
+            <small>{t('homePill')}</small>
+          </span>
         </Link>
-        <nav className="rail-nav">
+        <div className="rail-section-label">{isArabic ? 'القائمة الرئيسية' : 'MAIN MENU'}</div>
+        <nav className="rail-nav" aria-label={isArabic ? 'التنقل الرئيسي' : 'Primary navigation'}>
           <Link
-            className={`rail-icon ${isChatRoute ? 'active' : ''}`}
+            className={`rail-link ${isChatRoute && !imageAnalysisActive ? 'active' : ''}`}
             to="/chat"
-            aria-label={isArabic ? 'محادثة جديدة' : 'New chat'}
-            title={isArabic ? 'محادثة جديدة' : 'New chat'}
           >
-            <MessageSquarePlus size={18} />
+            <span className="rail-link-icon"><MessageSquarePlus size={18} /></span>
+            <span className="rail-link-label">{t('newChat')}</span>
           </Link>
-          <button
-            className="rail-icon"
-            type="button"
-            aria-label={isArabic ? 'بحث' : 'Search'}
-            title={isArabic ? 'بحث' : 'Search'}
-            onClick={() => {
-              const input = document.querySelector<HTMLInputElement>('.search-field input')
-              input?.focus()
-            }}
-          >
-            <Search size={18} />
-          </button>
           <Link
-            className={`rail-icon ${isActive('/encyclopedia') ? 'active' : ''}`}
+            className={`rail-link ${isActive('/encyclopedia') ? 'active' : ''}`}
             to="/encyclopedia"
-            aria-label={t('navLibrary')}
-            title={t('navLibrary')}
           >
-            <LayoutGrid size={18} />
+            <span className="rail-link-icon"><BookOpen size={18} /></span>
+            <span className="rail-link-label">{t('navLibrary')}</span>
           </Link>
           <Link
-            className="rail-icon"
+            className={`rail-link ${imageAnalysisActive ? 'active' : ''}`}
             to="/chat?tool=covid-chest-xray"
-            aria-label={t('libraryCategoryImage')}
-            title={t('libraryCategoryImage')}
           >
-            <FileImage size={18} />
+            <span className="rail-link-icon"><ScanLine size={18} /></span>
+            <span className="rail-link-label">{t('libraryCategoryImage')}</span>
           </Link>
-          <button
-            className="rail-icon"
-            type="button"
-            aria-label={isArabic ? 'سجل المحادثة' : 'Conversation history'}
-            title={isArabic ? 'سجل المحادثة' : 'Conversation history'}
-            onClick={() => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })}
-          >
-            <Clock3 size={18} />
-          </button>
           <Link
-            className={`rail-icon ${isActive('/guidelines') ? 'active' : ''}`}
+            className={`rail-link ${isActive('/guidelines') ? 'active' : ''}`}
             to="/guidelines"
-            aria-label={t('navGuidelines')}
-            title={t('navGuidelines')}
           >
-            <GraduationCap size={18} />
+            <span className="rail-link-icon"><BookOpenCheck size={18} /></span>
+            <span className="rail-link-label">{t('navGuidelines')}</span>
           </Link>
           <Link
-            className={`rail-icon ${isActive('/clinical-review') ? 'active' : ''}`}
+            className={`rail-link ${isActive('/clinical-review') ? 'active' : ''}`}
             to="/clinical-review"
-            aria-label={t('navClinicalReview')}
-            title={t('navClinicalReview')}
           >
-            <ClipboardCheck size={18} />
+            <span className="rail-link-icon"><ClipboardCheck size={18} /></span>
+            <span className="rail-link-label">{t('navClinicalReview')}</span>
           </Link>
         </nav>
         <div className="rail-bottom">
+          <div className="rail-privacy-note">
+            <span className="rail-privacy-icon"><HeartPulse size={18} /></span>
+            <span>{isArabic ? 'معلومات صحية بخصوصية' : 'Private health information'}</span>
+          </div>
           <Link
-            className={`rail-icon ${isActive('/guidelines') ? 'active' : ''}`}
-            to="/guidelines"
-            aria-label={t('navGuidelines')}
-            title={t('navGuidelines')}
-          >
-            <Settings size={18} />
-          </Link>
-          <Link
-            className="rail-avatar"
+            className={`rail-link ${isActive('/about') ? 'active' : ''}`}
             to="/about"
-            aria-label={isArabic ? 'حسابي' : 'My account'}
-            title={isArabic ? 'حسابي' : 'My account'}
           >
-            س
+            <span className="rail-link-icon"><Info size={18} /></span>
+            <span className="rail-link-label">{t('navAbout')}</span>
           </Link>
         </div>
       </aside>
