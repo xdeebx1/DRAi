@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { Link, Outlet, useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import {
-  Clock3, FileImage, GraduationCap, LayoutGrid,
+  Clock3, ClipboardCheck, FileImage, GraduationCap, LayoutGrid,
   MessageSquarePlus, Search, Settings, Sparkles,
 } from 'lucide-react'
 
@@ -16,13 +16,13 @@ export function Layout() {
   useEffect(() => {
     document.documentElement.lang = isArabic ? 'ar' : 'en'
     document.documentElement.dir = isArabic ? 'rtl' : 'ltr'
-    localStorage.setItem('mueen-language', isArabic ? 'ar' : 'en')
+    localStorage.setItem('sana-language', isArabic ? 'ar' : 'en')
   }, [isArabic, location.pathname])
 
   return (
     <div className={`app-shell premium-app-shell ${isChatRoute ? 'chat-mode' : ''}`}>
       <aside className="premium-rail" aria-label={isArabic ? 'التنقل الرئيسي' : 'Primary navigation'}>
-        <Link className="rail-brand" to="/" aria-label="Mueen">
+        <Link className="rail-brand" to="/" aria-label="Sana">
           <Sparkles size={21} />
         </Link>
         <nav className="rail-nav">
@@ -79,6 +79,14 @@ export function Layout() {
           >
             <GraduationCap size={18} />
           </Link>
+          <Link
+            className={`rail-icon ${isActive('/clinical-review') ? 'active' : ''}`}
+            to="/clinical-review"
+            aria-label={t('navClinicalReview')}
+            title={t('navClinicalReview')}
+          >
+            <ClipboardCheck size={18} />
+          </Link>
         </nav>
         <div className="rail-bottom">
           <Link
@@ -95,7 +103,7 @@ export function Layout() {
             aria-label={isArabic ? 'حسابي' : 'My account'}
             title={isArabic ? 'حسابي' : 'My account'}
           >
-            م
+            س
           </Link>
         </div>
       </aside>

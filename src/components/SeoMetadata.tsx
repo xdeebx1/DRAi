@@ -7,6 +7,7 @@ const pageKeys: Record<string, { title: string; description: string }> = {
   '/chat': { title: 'doctorTitle', description: 'homeCopy' },
   '/encyclopedia': { title: 'libraryTitle', description: 'libraryHint' },
   '/about': { title: 'aboutTitle', description: 'aboutBody' },
+  '/clinical-review': { title: 'clinicalReviewTitle', description: 'clinicalReviewIntro' },
   '/guidelines': { title: 'guidelinesTitle', description: 'guidelinesIntro' },
 }
 
@@ -28,7 +29,7 @@ export function SeoMetadata() {
     const keys = pageKeys[pathname] ?? pageKeys['/']
     const title = t(keys.title)
     const description = t(keys.description)
-    document.title = `${title} | ${i18n.language.startsWith('ar') ? 'مَعين' : 'Mueen'}`
+    document.title = `${title} | ${i18n.language.startsWith('ar') ? 'سَنا' : 'Sana'}`
     updateMeta('description', description)
     updateMeta('og:title', document.title)
     updateMeta('og:description', description)

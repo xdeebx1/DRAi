@@ -1,26 +1,11 @@
 import * as ort from 'onnxruntime-web/wasm'
-import modelSchemas from './modelSchemas.json'
 import { MEDICAL_MODELS, type ModelId } from './modelRegistry'
+import { getTabularInputSchema } from './modelInputSchemas'
 import type { ClassPrediction } from './imageClassifier'
-
-const SCHEMA_KEYS: Partial<Record<ModelId, keyof typeof modelSchemas>> = {
-  'diabetes-risk': 'diabetes',
-  'heart-risk': 'heart',
-  'kidney-risk': 'kidney',
-  'liver-disease': 'liver',
-  'symptom-classifier': 'symptoms',
-}
-
-export type TabularModelSchema = (typeof modelSchemas)[keyof typeof modelSchemas]
 
 const sessions = new Map<ModelId, Promise<ort.InferenceSession>>()
 
 ort.env.wasm.numThreads = 1
-
-export function getTabularInputSchema(modelId: ModelId): TabularModelSchema | undefined {
-  const schemaKey = SCHEMA_KEYS[modelId]
-  return schemaKey ? modelSchemas[schemaKey] : undefined
-}
 
 function getSession(modelId: ModelId, file: string): Promise<ort.InferenceSession> {
   const existing = sessions.get(modelId)

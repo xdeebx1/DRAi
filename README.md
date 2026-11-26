@@ -1,7 +1,12 @@
-# Mueen Health
+# Sana Health
 
-An independent Arabic-first health information app. The current phase contains
-two chest X-ray classifiers and an optional Gemini text assistant.
+An independent Arabic-first health-information app. Its catalog contains two
+chest X-ray classifiers and additional research ONNX models, with an optional
+Gemini text assistant.
+
+The `/clinical-review` page summarizes registered model metrics, supported
+classes, scope notes, validation dimensions, and data handling for clinician
+review. It does not claim clinical or regulatory approval.
 
 ## Privacy and scope
 

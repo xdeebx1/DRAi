@@ -11,7 +11,7 @@ import type { ClassPrediction } from '../imageClassifier'
 import { MEDICAL_MODELS, type ModelId } from '../modelRegistry'
 import { findMedicalTool, isFormTool, isImageTool, MEDICAL_CHAT_TOOLS } from '../medicalTools'
 import type { MedicalToolId } from '../server/geminiCore'
-import { classifyTabular, getTabularInputSchema } from '../tabularClassifier'
+import { getTabularInputSchema } from '../modelInputSchemas'
 
 interface ChatTurn {
   id: number
@@ -300,6 +300,7 @@ export function DoctorPage() {
       setLoading(true)
       setStreamingTurnId(null)
       try {
+        const { classifyTabular } = await import('../tabularClassifier')
         const predictions = await classifyTabular(toolId as ModelId, formValues)
         setTurn(turnId, (current) => ({ ...current, text: turnText, result: { modelId: toolId as ModelId, predictions } }))
         if (predictions[0]) {
@@ -640,7 +641,7 @@ function AssistantLabel({
   return (
     <div className="assistant-message-label">
       <span><Sparkles size={15} aria-hidden="true" /></span>
-      <strong>{t('mueenAssistant')}</strong>
+      <strong>{t('sanaAssistant')}</strong>
       <button className="copy-response" type="button" disabled={disabled} onClick={onCopy} aria-label={t('copyResponse')}>
         {copied ? <Check size={15} /> : <Copy size={15} />}
         <span>{copied ? t('copiedResponse') : t('copyResponse')}</span>
@@ -723,7 +724,7 @@ function MedicalReport({
         <section className="interpretation-panel" aria-busy={isStreaming}>
           <div className="interpretation-heading">
             <span className="interpretation-icon"><Sparkles size={17} aria-hidden="true" /></span>
-            <h3>{t('mueenAssistant')}</h3>
+            <h3>{t('sanaAssistant')}</h3>
             <button className="copy-response" type="button" disabled={isStreaming} onClick={() => onCopy(explanation)} aria-label={t('copyResponse')}>
               {copied ? <Check size={15} /> : <Copy size={15} />}
             </button>

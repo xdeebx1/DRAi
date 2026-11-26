@@ -1,4 +1,4 @@
-import { BookOpenCheck, CircleAlert, FlaskConical, ShieldCheck } from 'lucide-react'
+import { BookOpenCheck, CircleAlert, FlaskConical, LockKeyhole, ShieldCheck } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 
 const guidanceSections = [
@@ -6,6 +6,7 @@ const guidanceSections = [
   { icon: FlaskConical, title: 'guidelinesScoreTitle', body: 'guidelinesScoreBody' },
   { icon: BookOpenCheck, title: 'guidelinesChatTitle', body: 'guidelinesChatBody' },
   { icon: ShieldCheck, title: 'guidelinesDataTitle', body: 'guidelinesDataBody' },
+  { icon: LockKeyhole, title: 'guidelinesPrivacyTitle', body: 'guidelinesPrivacyBody' },
 ]
 
 export function GuidelinesPage() {

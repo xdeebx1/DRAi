@@ -54,6 +54,7 @@ img { display: block; max-width: 100%; }
   min-height: 100dvh;
   overflow-x: hidden;
 }
+.route-loading { display: grid; min-height: 50vh; place-items: center; color: #5B665F; }
 .premium-app-shell > .premium-rail {
   position: sticky;
   inset-block-start: 0;
@@ -437,6 +438,50 @@ html[dir="rtl"] .user-bubble { border-radius: 20px 20px 20px 4px; }
 .guidelines-note strong { font-size: 15px; }
 .guidelines-note p { margin: 4px 0 0; font-size: 14px; line-height: 1.8; }
 
+.clinical-review-page { max-width: 1280px; margin-inline: auto; padding: 48px; }
+.clinical-review-header { max-width: 900px; }
+.clinical-review-kicker { display: flex; align-items: center; gap: 10px; color: #1F5D3A; font-size: 14px; font-weight: 600; }
+.clinical-review-mark,
+.clinical-review-section-icon { width: 40px; height: 40px; display: grid; place-items: center; flex: 0 0 auto; border-radius: 12px; background: #E6F0E8; color: #1F5D3A; }
+.clinical-review-header h1 { margin: 18px 0 8px; font-size: 40px; line-height: 1.3; font-weight: 600; }
+.clinical-review-header > p { max-width: 780px; margin: 0; color: #5B665F; font-size: 16px; line-height: 1.8; }
+.clinical-review-status { display: flex; align-items: center; flex-wrap: wrap; gap: 9px; margin-top: 24px; border: 1px solid #DCE7DE; border-radius: 14px; background: #F7FBF8; color: #315940; padding: 13px 16px; }
+.clinical-review-status strong { margin-inline-start: auto; font-weight: 600; }
+.clinical-review-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 28px; }
+.clinical-review-stats article { display: grid; gap: 6px; min-height: 104px; border: 1px solid #E3E0D6; border-radius: 16px; background: #FFFFFF; padding: 18px; }
+.clinical-review-stats article > span { color: #5B665F; font-size: 13px; }
+.clinical-review-stats strong { color: #1B2A22; font-size: 19px; font-weight: 600; }
+.clinical-review-section { margin-top: 42px; }
+.clinical-review-section-heading { max-width: 850px; margin-bottom: 18px; }
+.clinical-review-section-heading h2,
+.clinical-review-privacy h2 { margin: 0 0 6px; font-size: 24px; line-height: 1.4; font-weight: 600; }
+.clinical-review-section-heading p,
+.clinical-review-privacy p { margin: 0; color: #5B665F; line-height: 1.8; }
+.clinical-model-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.clinical-model-card { min-width: 0; border: 1px solid #E3E0D6; border-radius: 18px; background: #FFFFFF; padding: 20px; }
+.clinical-model-card-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.clinical-model-card-top code { color: #66736B; font-size: 11px; overflow-wrap: anywhere; }
+.clinical-modality { border-radius: 999px; background: #E6F0E8; color: #315940; padding: 4px 10px; font-size: 12px; font-weight: 600; }
+.clinical-model-card h3 { margin: 16px 0 12px; font-size: 19px; font-weight: 600; }
+.clinical-model-metric { display: flex; align-items: center; justify-content: space-between; gap: 12px; border-block: 1px solid #ECEAE3; padding: 12px 0; }
+.clinical-model-metric span { color: #5B665F; font-size: 13px; }
+.clinical-model-metric strong { color: #1F5D3A; font-size: 22px; font-variant-numeric: tabular-nums; }
+.clinical-model-detail { margin-top: 14px; }
+.clinical-model-detail h4 { margin: 0 0 8px; font-size: 14px; font-weight: 600; }
+.clinical-class-list { display: flex; flex-wrap: wrap; gap: 7px; margin: 0; padding: 0; list-style: none; }
+.clinical-class-list li { border: 1px solid #E3E0D6; border-radius: 999px; background: #FBFAF7; padding: 4px 9px; color: #46534B; font-size: 12px; }
+.clinical-model-scope p { margin: 0; color: #5B665F; font-size: 13px; line-height: 1.75; }
+.clinical-review-evidence { margin-top: 34px; border: 1px solid #E3E0D6; border-radius: 18px; background: #FFFFFF; padding: 24px; }
+.clinical-review-evidence .clinical-review-section-heading { position: relative; padding-inline-start: 52px; }
+.clinical-review-evidence .clinical-review-section-icon { position: absolute; inset-inline-start: 0; inset-block-start: 0; }
+.clinical-review-evidence ol { display: grid; gap: 10px; margin: 18px 0 0; padding-inline-start: 24px; color: #46534B; line-height: 1.75; }
+.clinical-review-evidence-status { margin-top: 22px; border-top: 1px solid #ECEAE3; padding-top: 16px; }
+.clinical-review-evidence-status strong { color: #1B2A22; font-size: 14px; }
+.clinical-review-evidence-status p { margin: 5px 0 0; color: #5B665F; font-size: 13px; line-height: 1.8; }
+.clinical-review-privacy { display: grid; grid-template-columns: 40px minmax(0, 1fr); align-items: start; gap: 14px; margin-top: 16px; border: 1px solid #E3E0D6; border-radius: 18px; background: #FFFFFF; padding: 22px; }
+.clinical-review-links { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 14px; color: #1F5D3A; font-size: 14px; font-weight: 600; }
+.clinical-review-links a:hover { text-decoration: underline; }
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }
@@ -451,7 +496,7 @@ html[dir="rtl"] .user-bubble { border-radius: 20px 20px 20px 4px; }
   .home-feature-grid { grid-template-columns: 1fr; }
   .home-features { padding: 8px 24px 56px; }
   .library-grid { grid-template-columns: repeat(3, 1fr); }
-  .encyclopedia-page, .detail-page, .about-page { padding: 48px 24px; }
+  .encyclopedia-page, .detail-page, .about-page, .clinical-review-page { padding: 48px 24px; }
   .guidelines-page { padding: 48px 24px 56px; }
 }
 
@@ -497,10 +542,15 @@ html[dir="rtl"] .user-bubble { border-radius: 20px 20px 20px 4px; }
   .detail-grid, .about-grid { grid-template-columns: 1fr; }
   .about-page { padding: 32px 16px; }
   .about-header h1 { font-size: 38px; }
-  .guidelines-page { padding: 32px 16px 48px; }
+  .guidelines-page, .clinical-review-page { padding: 32px 16px 48px; }
   .guidelines-header h1 { font-size: 32px; }
   .guidelines-grid { grid-template-columns: 1fr; gap: 10px; margin-top: 24px; }
   .guideline-card { min-height: auto; }
+  .clinical-review-header h1 { font-size: 32px; }
+  .clinical-review-stats, .clinical-model-grid { grid-template-columns: 1fr; }
+  .clinical-review-stats article { min-height: 88px; }
+  .clinical-review-evidence { padding: 18px; }
+  .clinical-review-privacy { grid-template-columns: 1fr; padding: 18px; }
 }
 
 /* Premium chat workspace */
@@ -802,7 +852,8 @@ html[dir="rtl"] .user-bubble { border-radius: 20px 20px 20px 4px; }
   .encyclopedia-page,
   .detail-page,
   .about-page,
-  .guidelines-page { padding: 28px 16px 48px; }
+  .guidelines-page,
+  .clinical-review-page { padding: 28px 16px 48px; }
   .library-header h1 { font-size: 32px; }
   .filter-row { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 4px; }
   .filter-chip { white-space: nowrap; flex-shrink: 0; }
