@@ -2,8 +2,8 @@ import { useEffect } from 'react'
 import { Link, Outlet, useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import {
-  BookOpen, BookOpenCheck, ClipboardCheck, HeartPulse, Info,
-  MessageSquarePlus, ScanLine,
+  BookOpen, BookOpenCheck, ClipboardCheck, Info, MessageSquarePlus,
+  ScanLine,
 } from 'lucide-react'
 
 export function Layout() {
@@ -37,7 +37,6 @@ export function Layout() {
             <small>{t('homePill')}</small>
           </span>
         </Link>
-        <div className="rail-section-label">{isArabic ? 'القائمة الرئيسية' : 'MAIN MENU'}</div>
         <nav className="rail-nav" aria-label={isArabic ? 'التنقل الرئيسي' : 'Primary navigation'}>
           <Link
             className={`rail-link ${isChatRoute && !imageAnalysisActive ? 'active' : ''}`}
@@ -76,10 +75,6 @@ export function Layout() {
           </Link>
         </nav>
         <div className="rail-bottom">
-          <div className="rail-privacy-note">
-            <span className="rail-privacy-icon"><HeartPulse size={18} /></span>
-            <span>{isArabic ? 'معلومات صحية بخصوصية' : 'Private health information'}</span>
-          </div>
           <Link
             className={`rail-link ${isActive('/about') ? 'active' : ''}`}
             to="/about"
