@@ -5,7 +5,7 @@ import { defineConfig, loadEnv } from 'vite'
 import {
   streamGeminiAnswer,
   validateGeminiRequest,
-} from './api/geminiCore.ts'
+} from './src/server/geminiCore.ts'
 
 function developmentGeminiEndpoint(apiKey: string): Plugin {
   return {

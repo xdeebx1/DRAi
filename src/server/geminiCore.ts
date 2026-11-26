@@ -1,4 +1,4 @@
-import { MEDICAL_MODELS, type ModelId } from '../src/modelRegistry.js'
+import { MEDICAL_MODELS, type ModelId } from '../modelRegistry.js'
 
 export type MedicalToolId =
   | 'health-chat'

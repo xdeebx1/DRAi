@@ -1,4 +1,4 @@
-import type { MedicalGeminiRequest } from '../api/geminiCore'
+import type { MedicalGeminiRequest } from './server/geminiCore'
 
 export async function streamMedicalAssistant(
   request: MedicalGeminiRequest,

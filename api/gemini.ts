@@ -1,7 +1,7 @@
 import {
   streamGeminiAnswer,
   validateGeminiRequest,
-} from './geminiCore'
+} from '../src/server/geminiCore.js'
 
 interface ApiRequest {
   method?: string

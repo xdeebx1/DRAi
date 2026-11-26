@@ -1,4 +1,4 @@
-import type { MedicalToolId } from '../api/geminiCore'
+import type { MedicalToolId } from './server/geminiCore'
 
 export interface MedicalChatTool {
   id: MedicalToolId

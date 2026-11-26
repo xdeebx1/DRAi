@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { validateGeminiRequest } from './geminiCore'
+import { validateGeminiRequest } from '../src/server/geminiCore.js'
 
 describe('validateGeminiRequest', () => {
   it('accepts a chat request with a short conversation history', () => {

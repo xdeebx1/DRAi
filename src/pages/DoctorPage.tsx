@@ -10,7 +10,7 @@ import { streamMedicalAssistant } from '../geminiClient'
 import type { ClassPrediction } from '../imageClassifier'
 import { MEDICAL_MODELS, type ModelId } from '../modelRegistry'
 import { findMedicalTool, isFormTool, isImageTool, MEDICAL_CHAT_TOOLS } from '../medicalTools'
-import type { MedicalToolId } from '../../api/geminiCore'
+import type { MedicalToolId } from '../server/geminiCore'
 import { classifyTabular, getTabularInputSchema } from '../tabularClassifier'
 
 interface ChatTurn {
