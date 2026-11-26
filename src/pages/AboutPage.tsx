@@ -13,7 +13,7 @@ export function AboutPage() {
   return (
     <div className="about-page">
       <header className="about-header">
-        <p className="about-kicker">AAFIYA / عافية</p>
+        <p className="about-kicker">MEDIX / ميديكس</p>
         <h1>{t('aboutTitle')}</h1>
       </header>
       <div className="about-grid">

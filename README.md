@@ -1,4 +1,4 @@
-# Aafiya Health
+# Medix Health
 
 An independent Arabic-first health-information app. Its catalog contains two
 chest X-ray classifiers and additional research ONNX models, with an optional

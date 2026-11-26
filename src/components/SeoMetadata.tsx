@@ -29,7 +29,7 @@ export function SeoMetadata() {
     const keys = pageKeys[pathname] ?? pageKeys['/']
     const title = t(keys.title)
     const description = t(keys.description)
-    document.title = `${title} | ${i18n.language.startsWith('ar') ? 'عافية' : 'Aafiya'}`
+    document.title = `${title} | ${i18n.language.startsWith('ar') ? 'ميديكس' : 'Medix'}`
     updateMeta('description', description)
     updateMeta('og:title', document.title)
     updateMeta('og:description', description)
