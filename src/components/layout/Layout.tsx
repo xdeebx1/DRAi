@@ -32,7 +32,7 @@ export function Layout() {
             <Stethoscope size={22} strokeWidth={1.9} />
           </span>
           <span className="rail-brand-copy">
-            <strong>{isArabic ? 'سَنا' : 'Sana'}</strong>
+            <strong>{isArabic ? 'عافية' : 'Aafiya'}</strong>
           </span>
         </Link>
         <nav className="rail-nav" aria-label={isArabic ? 'التنقل الرئيسي' : 'Primary navigation'}>
